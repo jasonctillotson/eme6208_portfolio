@@ -1,265 +1,193 @@
-
-/*
-Design by TEMPLATED
-http://templated.co
-Released for free under the Creative Commons Attribution License
-*/
-
-body {
-	margin: 0;
-	padding: 0;
-	background: #87CEEB;
-	font-family: 'arial', sans-serif;
-	font-size: 14px;
-	color: #000000;
+body{
+		font-family: Trebuchet MS, Lucida Sans Unicode, Arial, sans-serif;	/* Font to use */
+		background-color:#FFF6DC;
+	}
+	#footer{
+		height:30px;
+		vertical-align:middle;
+		text-align:right;
+		clear:both;
+		padding-right:3px;
+		background-color:#317082;
+		margin-top:2px;
+		width:790px;
+	}
+	#footer form{
+		margin:0px;
+		margin-top:2px;
+	}
+	#dhtmlgoodies_dragDropContainer{	/* Main container for this script */
+		width:790px;
+		height:770px;
+		border:1px solid #317082;
+		background-color:#FFF;
+		-moz-user-select:none;
+	}
+	#dhtmlgoodies_dragDropContainer ul{	/* General rules for all <ul> */
+		margin-top:0px;
+		margin-left:0px;
+		margin-bottom:0px;
+		padding:2px;
+	}
+	
+	#dhtmlgoodies_dragDropContainer li,
+	#dragContent li,
+li#indicateDestination {
+	list-style-type: none;
+	height: 40px;                        /* taller boxes */
+	background-color: #FFEB3B;           /* bright yellow */
+	border: 2px solid #333;              /* thicker, dark border */
+	padding: 10px 12px;                  /* more internal space */
+	margin-bottom: 8px;                  /* more spacing between boxes */
+	cursor: drag;                        /* updated cursor */
+	font-size: 16px;                     /* larger text */
+	line-height: 20px;
+	border-radius: 8px;                  /* rounded corners */
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* subtle shadow */
+	transition: all 0.2s ease;           /* smooth hover animation */
+	color: #000;                         /* text color */
+	font-weight: 500;                    /* semi-bold text */
 }
 
-h1, h2, h3 {
-	margin: 0;
-	padding: 0;
-	text-transform: uppercase;
-	font-weight: 300;
-	color: #7D7764;
+/* Hover effect */
+#dhtmlgoodies_dragDropContainer li:hover {
+	transform: scale(1.05);
+	background-color: #FFF176;           /* lighter yellow on hover */
 }
 
-h1 {
-	font-size: 2em;
-}
+	}
 
-h2 {
-	font-size: 2.8em;
-}
+	li#indicateDestination{	/* Box indicating where content will be dropped - i.e. the one you use if you don't use arrow */
+		border:1px dotted #600;	
+		background-color:#FFF;
+	}
+		
+	#dhtmlgoodies_dragDropContainer ul li.correctAnswer{	/* Correctly moved item */
+		background-color:green;
+		color:#FFF;
+	}
+	#dhtmlgoodies_dragDropContainer ul li.wrongAnswer{	/* Item moved to wrong box */
+		background-color:red;
+		color:#FFF;
+	}
+	
+	
+	/* LEFT COLUMN CSS */
 
-h3 {
-	font-size: 1.6em;
-}
+	#dhtmlgoodies_listOfItems ul li {
+    	padding: 5px 10px;       /* Smaller padding */
+	    font-size: 14px;         /* Smaller text */
+    	cursor: grab;            /* Show grabbing hand */
+	    border-radius: 5px;      /* Optional: rounded corners */
+    	width: auto;             /* Adjust width automatically */
+    	box-sizing: border-box;
+	}
 
-p, ul, ol {
-	margin-top: 0;
-	line-height: 180%;
-}
+	div#dhtmlgoodies_listOfItems{	
+		
+		float:left;
+		padding-left:10px;
+		padding-right:10px;
+		
+		/* CSS HACK */
+		width: 180px;	/* IE 5.x */
+		width/* */:/**/160px;	/* Other browsers */
+		width: /**/160px;
+				
+	}
+	#dhtmlgoodies_listOfItems ul{	/* Left(Sources) column <ul> */
+		height:560px;	
 
-ul, ol {
-}
+	}
+		
+	div#dhtmlgoodies_listOfItems div{
+		border:1px solid #999;		
+	}
+	div#dhtmlgoodies_listOfItems div ul{	/* Left column <ul> */
+		margin-left:10px;	/* Space at the left of list - the arrow will be positioned there */
+	}
+	#dhtmlgoodies_listOfItems div p{	/* Heading above left column */
+		margin:0px;	
+		font-weight:bold;
+		padding-left:12px;
+		background-color:#317082;	
+		color:#FFF;
+		margin-bottom:5px;
+	}
+	/* END LEFT COLUMN CSS */
+	
+	#dhtmlgoodies_dragDropContainer .mouseover{	/* Mouse over effect DIV box in right column */
+		background-color:#848f91;
+		border:2px solid #317082;
+	}
+	
+	/* Start main container CSS */
 
-a {
-	text-decoration: none;
-	color: #5BA689;
-}
+	#dhtmlgoodies_mainContainer div{
+    	display: inline-block;      /* Make columns sit next to each other */
+    	vertical-align: top;        /* Align top */
+    	width: 220px;               /* Adjust column width */
+    	margin-right: 10px;         /* Space between columns */
+	
+	div#dhtmlgoodies_mainContainer{	/* Right column DIV */
+		width:590px;
+		float:left;	
+	}
+	#dhtmlgoodies_mainContainer div{	/* Parent <div> of small boxes */
+		float:left;
+		margin-right:10px;
+		margin-bottom:10px;
+		margin-top:0px;
+		border:2px solid #999;
 
-a:hover {
-}
+		/* CSS HACK */
+		width: 172px;	/* IE 5.x */
+		width/* */:/**/170px;	/* Other browsers */
+		width: /**/170px;
+				
+	}
+	#dhtmlgoodies_mainContainer div ul{
+		margin-left:10px;
+	}
+	
+	#dhtmlgoodies_mainContainer div p{	/* Heading above small boxes */
+		margin:0px;
+		padding:0px;
+		padding-left:12px;
+		font-weight:bold;
+		background-color:#c75006;	
+		color:#FFF;	
+		margin-bottom:5px;
+	}
+	
+	#dhtmlgoodies_mainContainer ul{	/* Small box in right column ,i.e <ul> */
+		width:152px;
+		height:80px;	
+		border:0px;	
+		margin-bottom:0px;
+		overflow:hidden;
+		
+	}
+	
+	#dragContent{	/* Drag container */
+  		display: inline-block;
+  		padding: 10px 20px;
+  		border-radius: 6px;
+  		font-size: 16px;
+  		background-color: #2f40fa;
+  		cursor: grab;
 
-#wrapper {
-	overflow: hidden;
-	background: #87CEEB;
-}
+	}
 
-.container {
-	width: 1200px;
-	margin: 0px auto;
-}
+	#dragDropIndicator{	/* DIV for the small arrow */
+		position:absolute;
+		width:7px;
+		height:10px;
+		display:none;
+		z-index:1000;
+		margin:0px;
+		padding:0px;
+	}
+	.style1 {color: #FF0000}
 
-/* Header */
-
-#header-wrapper {
-	overflow: hidden;
-	height: 600px;
-}
-
-#header {
-	width: 960px;
-	height: 200px;
-	margin: 0 auto;
-	padding: 0px 20px;
-}
-
-/* Logo */
-
-#logo {
-	overflow: hidden;
-	height: 150px;
-}
-
-#logo h1, #logo p {
-	text-align: center;
-}
-
-#logo h1 {
-	padding: 5px 0px 20px 0px;
-	letter-spacing: -6px;
-	text-transform: capitalize;
-	font-size: 80px;
-}
-
-#logo p {
-	margin-top: -20px;
-	padding: 0px 0px 0px 5px;
-	font-size: 20px;
-	font-weight: 300;
-	color: #696969;
-}
-
-#logo p a {
-	color: #696969;
-}
-
-#logo a {
-	border: none;
-	background: none;
-	text-decoration: none;
-	color: #3C342E;
-}
-
-
-/* Menu */
-
-#menu-wrapper {
-	overflow: hidden;
-	height: 52px;
-	margin-bottom: 2em;
-	background: #003366;
-}
-
-#menu {
-	overflow: hidden;
-	height: 52px;
-}
-
-#menu ul {
-	margin: 0;
-	padding: 0px 0px 0px 0px;
-	list-style: none;
-	line-height: normal;
-	text-align: center;
-}
-
-#menu li {
-	display: inline-block;
-}
-
-#menu a {
-	display: block;
-	padding: 0px 30px;
-	line-height: 52px;
-	border: none;
-	text-decoration: none;
-	text-align: center;
-	font-family: 'Oswald', sans-serif;
-	font-size: 14px;
-	font-weight: 300;
-	color: #FFFFFF;
-}
-
-#menu a:hover, #menu .current_page_item a {
-	background: #7D7764;
-	text-decoration: none;
-	color: #FFFFFF;
-}
-
-#menu .current_page_item a {
-}
-
-/* Page */
-
-#page {
-	overflow: hidden;
-	padding: 20px 20px 40px 20px;
-}
-
-/* Content */
-
-#content {
-	float: left;
-	width: 752px;
-	padding: 0px 0px 0px 0px;
-}
-
-
-/* Footer */
-
-#footer {
-	height: 100px;
-	margin: 0 auto;
-	padding: 50px 0px 0px 0px;
-}
-
-#footer p {
-	margin: 0;
-	padding-top: 10px;
-	line-height: normal;
-	text-align: center;
-	text-shadow: 1px 1px 0px #FFFFFF;
-	color: #909090;
-}
-
-#footer a {
-	text-decoration: underline;
-	color: #909090;
-}
-
-#footer a:hover {
-	text-decoration: none;
-	color: #383838;
-}
-
-.box1 {
-	overflow: hidden;
-	height: 300px;
-	background: url(images/img04.jpg) no-repeat center bottom;
-}
-
-
-/* Three Column Content */
-
-#three-column {
-	overflow: hidden;
-	padding: 10px 0px 50px 0px;
-}
-
-#three-column .tbox1 {
-	float: left;
-	width: 384px;
-	margin-right: 20px;
-}
-
-#three-column .tbox2 {
-	float: left;
-	width: 384px;
-}
-
-#three-column .tbox3 {
-	float: right;
-	width: 384px;
-}
-
-.box-style {
-	background: #FFFFFF;
-	text-align: center;
-}
-
-.box-style h2 {
-	padding: 10px 0px;
-	letter-spacing: -1px;
-	font-size: 22px;
-	color: #2D2D2D;
-}
-
-.box-style .content {
-	overflow: hidden;
-	width: 324px;
-	padding: 30px;
-}
-
-.button
-{
-	display: inline-block;
-	margin: 1em 0em;
-	background: #000;
-	padding: 1em 2em;
-	color: #FFFFFF;
-
-}
-
-
-
+	

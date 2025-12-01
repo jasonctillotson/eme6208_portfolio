@@ -1,163 +1,436 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
 
-
-<!--
-Design by TEMPLATED
-http://templated.co
-Released for free under the Creative Commons Attribution License
-Name       : Vestibule 
-Description: A two-column, fixed-width design with dark color scheme.
-Version    : 1.0
-Released   : 20130406
--->
-
-<!-- Comments are in ALL CAPS -->
-
-
-<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-<!-- SET THE PAGE TITLE INSIDE THE TITLE TAGS BELOW -->
-<title>Jason Tillotson's ePortfolio</title>
+	<title>Drag and Drop Quiz</title>
+	
+	 <link rel="stylesheet" href="style.css">
+	
+	
+	<script type="text/javascript">
+	
+	
+	/* VARIABLES YOU COULD MODIFY */
+	var boxSizeArray = [3,3,3,3,3,3,3];	// Array indicating how many items there is room for in the right column ULs
+	
+	var arrow_offsetX = -10;	// Offset X - position of small arrow
+	var arrow_offsetY = 1;	// Offset Y - position of small arrow
+	
+	var arrow_offsetX_firefox = -10;	// Firefox - offset X small arrow
+	var arrow_offsetY_firefox = -15; // Firefox - offset Y small arrow
+	
+	var verticalSpaceBetweenListItems = 5;	// Pixels space between one <li> and next	
+											// Same value or higher as margin bottom in CSS for #dhtmlgoodies_dragDropContainer ul li,#dragContent li
+	
+											
+	var initShuffleItems = true;	// Shuffle items before staring
 
-<link href="http://fonts.googleapis.com/css?family=Oxygen:400,700,300" rel="stylesheet" type="text/css" />
-<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
-</head>
+	var indicateDestionationByUseOfArrow = true;	// Display arrow to indicate where object will be dropped(false = use rectangle)
+	
+	
+	var lockedAfterDrag = false;
+	
+	
+	/* END VARIABLES YOU COULD MODIFY */
+	
+	var dragDropTopContainer = true;
+	var dragTimer = -1;
+	var dragContentObj = false;
+	var contentToBeDragged = false;	// Reference to dragged <li>
+	var contentToBeDragged_src = false;	// Reference to parent of <li> before drag started
+	var contentToBeDragged_next = false; 	// Reference to next sibling of <li> to be dragged
+	var destinationObj = false;	// Reference to <UL> or <LI> where element is dropped.
+	var dragDropIndicator = false;	// Reference to small arrow indicating where items will be dropped
+	var ulPositionArray = new Array();
+	var mouseoverObj = false;	// Reference to highlighted DIV
+	
+	var MSIE = navigator.userAgent.indexOf('MSIE')>=0?true:false;
+	var navigatorVersion = navigator.appVersion.replace(/.*?MSIE (\d\.\d).*/g,'$1')/1;
+	var destinationBoxes = new Array();
+	var indicateDestinationBox = false;
+		
+	function getTopPos(inputObj)
+	{		
+	  var returnValue = inputObj.offsetTop;
+	  while((inputObj = inputObj.offsetParent) != null){
+	  	if(inputObj.tagName!='HTML')returnValue += inputObj.offsetTop;
+	  }
+	  return returnValue;
+	}
+	
+	function getLeftPos(inputObj)
+	{
+	  var returnValue = inputObj.offsetLeft;
+	  while((inputObj = inputObj.offsetParent) != null){
+	  	if(inputObj.tagName!='HTML')returnValue += inputObj.offsetLeft;
+	  }
+	  return returnValue;
+	}
+		
+	function cancelEvent()
+	{
+		return false;
+	}
+	function initDrag(e)	// Mouse button is pressed down on a LI
+	{
+		if(document.all)e = event;
+		if(lockedAfterDrag && this.parentNode.id!='allItems')return;
+		var st = Math.max(document.body.scrollTop,document.documentElement.scrollTop);
+		var sl = Math.max(document.body.scrollLeft,document.documentElement.scrollLeft);
+		
+		
+		
+		dragTimer = 0;
+		dragContentObj.style.left = e.clientX + sl + 'px';
+		dragContentObj.style.top = e.clientY + st + 'px';
+		contentToBeDragged = this;
+		contentToBeDragged_src = this.parentNode;
+		contentToBeDragged_next = false;
+		if(this.nextSibling){
+			contentToBeDragged_next = this.nextSibling;
+			if(!this.tagName && contentToBeDragged_next.nextSibling)contentToBeDragged_next = contentToBeDragged_next.nextSibling;
+		}
+		timerDrag();
+		return false;
+	}
+	
+	function everythingIsCorrect()
+	{
+		alert('Great work! You nailed it!');		
+	}
+	
+	
+	function timerDrag()
+	{
+		if(dragTimer>=0 && dragTimer<10){
+			dragTimer++;
+			setTimeout('timerDrag()',10);
+			return;
+		}
+		if(dragTimer==10){
+			dragContentObj.style.display='block';
+			dragContentObj.appendChild(contentToBeDragged);
+		}
+	}
+	
+	function moveDragContent(e)
+	{
+		if(dragTimer<10){
+			if(contentToBeDragged){
+				if(contentToBeDragged_next){
+					contentToBeDragged_src.insertBefore(contentToBeDragged,contentToBeDragged_next);
+				}else{
+					contentToBeDragged_src.appendChild(contentToBeDragged);
+				}	
+			}
+			return;
+		}
+		if(document.all)e = event;
+		var st = Math.max(document.body.scrollTop,document.documentElement.scrollTop);
+		var sl = Math.max(document.body.scrollLeft,document.documentElement.scrollLeft);
+		
+		
+		dragContentObj.style.left = e.clientX + sl + 'px';
+		dragContentObj.style.top = e.clientY + st + 'px';
+		
+		if(mouseoverObj)mouseoverObj.className='';
+		destinationObj = false;
+		dragDropIndicator.style.display='none';
+		if(indicateDestinationBox)indicateDestinationBox.style.display='none';
+		var x = e.clientX + sl;
+		var y = e.clientY + st;
+		var width = dragContentObj.offsetWidth;
+		var height = dragContentObj.offsetHeight;
+		
+		var tmpOffsetX = arrow_offsetX;
+		var tmpOffsetY = arrow_offsetY;
+		if(!document.all){
+			tmpOffsetX = arrow_offsetX_firefox;
+			tmpOffsetY = arrow_offsetY_firefox;
+		}
 
-<body>
-<div id="wrapper">
-<!-- START OF THE NAVIGATION SECTION.  DO NOT CHANGE ANYTHING ABOVE THIS LINE EXCEPT TO SET THE TITLE. -->
-
-
-	<div id="menu-wrapper">
-		<div id="menu" class="container">
-			<ul>
-				<!-- NAVIGATION MENU.  THERE SHOULD BE ONE LIST ITEM FOR EACH BUTTON IN YOUR NAVIGATION BAR. -->
-                <!-- REPLACE THE # IN THE LINK WITH THE FILE NAME OF THE APPROPRIATE PAGE.  -->
-                <li class="current_page_item"><a href="index.html">About</a></li>
-				<li><a href="gallery">Image Editing</a></li>
-				<li><a href="quiz.html">Web Design</a></li>
-				<li><a href="https://youtu.be/n5AJojW1TOU">Video Production</a></li>
-				<li><a href="animation.html">Animation</a></li>
-				<li><a href="screencast.html">Screencast</a></li>
-				<li><a href="contact.html">Contact Me</a></li>
-			</ul>
-		</div>
-	</div>
-	<div id="logo" class="container">
-		<!-- THIS IS WHERE YOU CUSTOMIZE THE HEADER FOR EACH PAGE. -->
-        <h1>Jason Tillotson's E-Portfolio</h1>
-		<!-- THIS IS WHERE YOU CUSTOMIZE THE SUBHEADER FOR EACH PAGE. -->
-        <p>This is my EME 6208 design and development e-portfolio. Enjoy!</p>
-	</div>
-	<div id="page" class="container">
-		<div>
-			<div class="entry">
-				<!-- THIS IS WHERE YOU CUSTOMIZE THE INTRODUCTORY PARAGRAPH FOR EACH PAGE. -->
-                <p> Hi Everyone!
-Thank you for taking the time to stop by my site. Here you’ll find a little bit about my professional and personal ventures. Whether it’s inspiration, motivation or even distraction, I hope you find something useful here. 
-
-A little about me…
-
-I grew up in Cape Coral, Florida and moved to Washington, D.C. at the age of 17 to attend American University. I represented The AU Eagles at Division I level for three years before suffering an injury that would ultimately kick-start my coaching career. I went on to graduate from AU in 2019 with a degree in Broadcast Journalism.
-
-In 2023 I moved to Gainesville, Florida to start a career in higher education at the University of Florida. 
-
-While most of my professional life has been spent coaching the wonderful sport of swimming, and helping students find purpose in their early careers, I believe people should be multidimensional, and pursue all their interests. This philosophy led me to start a non-profit, pursue a Masters degree, train for marathons, write a book, dabble in voice-acting and more!
-
-When I’m not working, running, or writing, you can find me lounging on the couch with my dogs and watching something on HBO.
-
-Click the buttons below to see what i’m working on these days! On this page you will find a high-level overview of all the work I have done in this course. </p>
-			</div>
-		</div>
-	</div>
-    
-    
-<!-- END OF THE NAVIGATION SECTION. -->
-
-<!-- START OF THE CONTENT SECTION. -->
-
-<!-- ON OTHER PAGES, LIKE THE PROJECT PAGES, YOU WILL TAKE OUT EVERYTHING BETWEEN HERE AND THE END OF THE CONTENT SECTION AND REPLACE IT WITH THE PROJECT CONTENT. -->
-    
-    
-    
-    
-	<div id="three-column" class="container">
-		<div class="tbox1">
-			<div class="box-style">
-				<div class="content">
+		for(var no=0;no<ulPositionArray.length;no++){
+			var ul_leftPos = ulPositionArray[no]['left'];	
+			var ul_topPos = ulPositionArray[no]['top'];	
+			var ul_height = ulPositionArray[no]['height'];
+			var ul_width = ulPositionArray[no]['width'];
+			
+			if((x+width) > ul_leftPos && x<(ul_leftPos + ul_width) && (y+height)> ul_topPos && y<(ul_topPos + ul_height)){
+				var noExisting = ulPositionArray[no]['obj'].getElementsByTagName('LI').length;
+				if(indicateDestinationBox && indicateDestinationBox.parentNode==ulPositionArray[no]['obj'])noExisting--;
+				if(noExisting<boxSizeArray[no-1] || no==0){
+					dragDropIndicator.style.left = ul_leftPos + tmpOffsetX + 'px';
+					var subLi = ulPositionArray[no]['obj'].getElementsByTagName('LI');
+					for(var liIndex=0;liIndex<subLi.length;liIndex++){
+						var tmpTop = getTopPos(subLi[liIndex]);
+						if(!indicateDestionationByUseOfArrow){
+							if(y<tmpTop){
+								destinationObj = subLi[liIndex];
+								indicateDestinationBox.style.display='block';
+								subLi[liIndex].parentNode.insertBefore(indicateDestinationBox,subLi[liIndex]);
+								break;
+							}
+						}else{							
+							if(y<tmpTop){
+								destinationObj = subLi[liIndex];
+								dragDropIndicator.style.top = tmpTop + tmpOffsetY - Math.round(dragDropIndicator.clientHeight/2) + 'px';
+								dragDropIndicator.style.display='block';
+								break;
+							}	
+						}					
+					}
 					
-					<h2>Image Editing</h2>
-					<p> For this project I used Adobe products to manipulate a photo I took on an iPhone 16 to match the vibe of Matthew McConaughy's book Greenlights, and to create a logo for a fictional swim club.</p>
-					<a href="gallery.html" class="button">Learn More</a>
-				</div>
-			</div>
-		</div>
-		<div class="tbox2">
-			<div class="box-style">
-				<div class="content">
-					<h2>Web Design</h2>
-					<p>For the Quiz, Drag and Drop Assessment I coded in GitHub to and originally used iFrame to port my web pages to my SquareSpace domain, but I ran into issues with functionality, so I decided to host everything on GitHub.</p>
-					<a href= "quiz.html" class="button">Learn More</a>
-				</div>
-			</div>
-		</div>
-		<div class="tbox3">
-			<div class="box-style">
-				<div class="content">
-					<h2>Video Production</h2>
-					<p>For this project, I used Canva and Loom to produce a walkthrough video about the history of The Elder Scrolls V: Skyrim </p>
-					<a href="https://youtu.be/n5AJojW1TOU" class="button">Learn More</a>
-					<iframe width="660" height="315" src="https://www.youtube.com/embed/lnuGvNN8kXY?si=2nPnUXR6UdC8sBHb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-				</div>
-			</div>
-		</div>
+					if(!indicateDestionationByUseOfArrow){
+						if(indicateDestinationBox.style.display=='none'){
+							indicateDestinationBox.style.display='block';
+							ulPositionArray[no]['obj'].appendChild(indicateDestinationBox);
+						}
+						
+					}else{
+						if(subLi.length>0 && dragDropIndicator.style.display=='none'){
+							dragDropIndicator.style.top = getTopPos(subLi[subLi.length-1]) + subLi[subLi.length-1].offsetHeight + tmpOffsetY + 'px';
+							dragDropIndicator.style.display='block';
+						}
+						if(subLi.length==0){
+							dragDropIndicator.style.top = ul_topPos + arrow_offsetY + 'px'
+							dragDropIndicator.style.display='block';
+						}
+					}
+					
+					if(!destinationObj)destinationObj = ulPositionArray[no]['obj'];
+					mouseoverObj = ulPositionArray[no]['obj'].parentNode;
+					mouseoverObj.className='mouseover';
+					return;
+				}
+			}
+		}
+	}
+	
+	function checkAnswers()
+	{
+		
+		for(var no=0;no<destinationBoxes.length;no++){
+			var subLis = destinationBoxes[no].getElementsByTagName('LI');
+			if(subLis.length<boxSizeArray[no])return;	
+			
+			for(var no2=0;no2<subLis.length;no2++){
+				if(subLis[no2].className=='wrongAnswer')return;
+			}		
+		}
+		
+		everythingIsCorrect();
+		
+		
+	}
+	
+	
+	/* End dragging 
+	Put <LI> into a destination or back to where it came from.
+	*/	
+	function dragDropEnd(e)
+	{
+		if(dragTimer==-1)return;
+		if(dragTimer<10){
+			dragTimer = -1;
+			return;
+		}
+		dragTimer = -1;
+		if(document.all)e = event;		
+		if(destinationObj){
+			var groupId = contentToBeDragged.getAttribute('groupId');
+			if(!groupId)groupId = contentToBeDragged.groupId;
+			
+			var destinationToCheckOn = destinationObj;
+			if(destinationObj.tagName!='UL'){
+				destinationToCheckOn = destinationObj.parentNode;
+			}
+			
+			var answerCheck = false;
+			if(groupId == destinationToCheckOn.id){
+				contentToBeDragged.className = 'correctAnswer';		
+				answerCheck=true;	
+			}else{
+				contentToBeDragged.className = 'wrongAnswer';
+			}
+			if(destinationObj.id=='allItems' || destinationObj.parentNode.id=='allItems')contentToBeDragged.className='';
+			
+			
+			if(destinationObj.tagName=='UL'){
+				destinationObj.appendChild(contentToBeDragged);
+			}else{
+				destinationObj.parentNode.insertBefore(contentToBeDragged,destinationObj);
+			}
+			mouseoverObj.className='';
+			destinationObj = false;
+			dragDropIndicator.style.display='none';
+			if(indicateDestinationBox){
+				indicateDestinationBox.style.display='none';
+				document.body.appendChild(indicateDestinationBox);
+			}
+						
+			contentToBeDragged = false;
+			
+			if(answerCheck)checkAnswers();	
+			
+			return;
+		}	
+		if(contentToBeDragged_next){
+			contentToBeDragged_src.insertBefore(contentToBeDragged,contentToBeDragged_next);
+		}else{
+			contentToBeDragged_src.appendChild(contentToBeDragged);
+		}
+		contentToBeDragged = false;
+		dragDropIndicator.style.display='none';
+		if(indicateDestinationBox){
+			indicateDestinationBox.style.display='none';
+			document.body.appendChild(indicateDestinationBox);
+			
+		}		
+		mouseoverObj = false;
+		
+	}
+	
+	/* 
+	Preparing data to be saved 
+	*/
+	function saveDragDropNodes()
+	{
+		var saveString = "";
+		var uls = dragDropTopContainer.getElementsByTagName('UL');
+		for(var no=0;no<uls.length;no++){	// LOoping through all <ul>
+			var lis = uls[no].getElementsByTagName('LI');
+			for(var no2=0;no2<lis.length;no2++){
+				if(saveString.length>0)saveString = saveString + ";";
+				saveString = saveString + uls[no].id + '|' + lis[no2].id;
+			}	
+		}		
+		
+		document.getElementById('saveContent').innerHTML = '<h1>Ready to save these nodes:</h1> ' + saveString.replace(/;/g,';<br>') + '<p>Format: ID of ul |(pipe) ID of li;(semicolon)</p><p>You can put these values into a hidden form fields, post it to the server and explode the submitted value there</p>';
+		
+	}
+	
+	function initDragDropScript()
+	{
+		dragContentObj = document.getElementById('dragContent');
+		dragDropIndicator = document.getElementById('dragDropIndicator');
+		dragDropTopContainer = document.getElementById('dhtmlgoodies_dragDropContainer');
+		document.documentElement.onselectstart = cancelEvent;;
+		var listItems = dragDropTopContainer.getElementsByTagName('LI');	// Get array containing all <LI>
+		var itemHeight = false;
+		for(var no=0;no<listItems.length;no++){
+			listItems[no].onmousedown = initDrag;
+			listItems[no].onselectstart = cancelEvent;
+			if(!itemHeight)itemHeight = listItems[no].offsetHeight;
+			if(MSIE && navigatorVersion/1<6){
+				listItems[no].style.cursor='hand';
+			}			
+		}
+		
+		var mainContainer = document.getElementById('dhtmlgoodies_mainContainer');
+		var uls = mainContainer.getElementsByTagName('UL');
+		itemHeight = itemHeight + verticalSpaceBetweenListItems;
+		for(var no=0;no<uls.length;no++){
+			uls[no].style.height = itemHeight * boxSizeArray[no]  + 'px';
+			destinationBoxes[destinationBoxes.length] = uls[no];
+		}
+		
+		var leftContainer = document.getElementById('dhtmlgoodies_listOfItems');
+		var itemBox = leftContainer.getElementsByTagName('UL')[0];
+		
+		document.documentElement.onmousemove = moveDragContent;	// Mouse move event - moving draggable div
+		document.documentElement.onmouseup = dragDropEnd;	// Mouse move event - moving draggable div
+		
+		var ulArray = dragDropTopContainer.getElementsByTagName('UL');
+		for(var no=0;no<ulArray.length;no++){
+			ulPositionArray[no] = new Array();
+			ulPositionArray[no]['left'] = getLeftPos(ulArray[no]);	
+			ulPositionArray[no]['top'] = getTopPos(ulArray[no]);	
+			ulPositionArray[no]['width'] = ulArray[no].offsetWidth;
+			ulPositionArray[no]['height'] = ulArray[no].clientHeight;
+			ulPositionArray[no]['obj'] = ulArray[no];
+		}
+		
+		if(initShuffleItems){
+			var allItemsObj = document.getElementById('allItems');
+			var initItems = allItemsObj.getElementsByTagName('LI');
+			
+			for(var no=0;no<(initItems.length*10);no++){
+				var itemIndex = Math.floor(Math.random()*initItems.length);
+				allItemsObj.appendChild(initItems[itemIndex]);
+			}
+		}
+		if(!indicateDestionationByUseOfArrow){
+			indicateDestinationBox = document.createElement('LI');
+			indicateDestinationBox.id = 'indicateDestination';
+			indicateDestinationBox.style.display='none';
+			document.body.appendChild(indicateDestinationBox);
+		}		
+		
+	}
+	
+	window.onload = initDragDropScript;
+	</script>
+</head><body>
+<h1 align="center">Career Development Resources</h1>
+<p> Can you correctly assign each resource to the career development topic it supports? Each topic can only contain <span class="style1">3 resources</span>.</p>
+<div id="dhtmlgoodies_dragDropContainer">
+	<div id="topBar">
+	<div style="padding-bottom: 5px; width: 728px; height: 1px;">
+
+</script>
 	</div>
-	<div id="three-column" class="container">
-		<div class="tbox1">
-			<div class="box-style">
-				<div class="content">
-					<h2>Digital Animation</h2>
-					<p> Coming Soon! </p>
-					<a href="animation.html" class="button">Learn More</a>
-				</div>
-			</div>
+			
 		</div>
-		<div class="tbox2">
-			<div class="box-style">
-				<div class="content">
-					<h2>Screencasting</h2>
-					<p> Coming Soon! </p>
-					<a href="screencast.html" class="button">Learn More</a>
-				</div>
-			</div>
-		</div>
-		<div class="tbox3">
-			<div class="box-style">
-				<div class="content">
-					<h2>E-Portfolio</h2>
-					<p> Coming Soon! </p>
-				
-				</div>
-			</div>
+	<div id="dhtmlgoodies_listOfItems">
+		<div class="">
+			<p>Resources</p>		
+		<ul id="allItems">
+			
+			
+		<li id="node1" groupid="box1">C.H.O.M.P</li>
+		<li class="" id="node2" groupid="box3">Quinnica</li>
+		<li class="" id="node3" groupid="box2">Forage</li>
+		<li id="node4" groupid="box2">Gators For Good</li>
+		<li class="" id="node5" groupid="box1">Career Insights</li>
+		<li class="" id="node6" groupid="box4">Gator Network</li>
+		<li id="node7" groupid="box4">CareerHub</li>
+		<li id="node8" groupid="box1">What Can I Do W This Major?</li>
+		<li id="node9" groupid="box2">Exper. Learning Dashboard</li></ul>
+		<li id="node10" groupid="box3">Labor Market Data</li></ul>
+		<li id="node11" groupid="box4">LinkedIn Alumni Tool</li></ul>
+		<li id="node12" groupid="box3">Gator Career Closet</li></ul>
+
 		</div>
 	</div>	
-    
-    
-    
-    
-    
-<!-- END OF THE CONTENT SECTION.  BELOW YOU CAN CUSTOMIZE YOUR FOOTER. -->
-</div>
+	<div id="dhtmlgoodies_mainContainer">
+		<!-- ONE <UL> for each "room" -->
+		<div class="">
+			<p>Career Exploration</p>
+			<ul style="height: 72px;" id="box1">
+			</ul>
+		</div>
+		<div class="">		
+			<p>Gaining Experience</p>
+			<ul style="height: 72px;" id="box2"></ul>
+		</div>
+		
+		<div>
+			<p>Job Application Prep</p>
+			<ul style="height: 72px;" id="box3"></ul>
+		</div>
+		
+		<div>
+  			<p>Networking</p>
+  			<ul style="height: 72px;" id="box4"></ul>
+		</div>
 
-<div id="footer">
-	<!-- START FOOTER -->
-	<p> Thanks for checking out my eportfolio! I look forward to collaborating! <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.  Photos by <a href="http://fotogrph.com/">Fotogrph</a>.</p>
-    <!-- END FOOTER -->
+		
+	</div>
 </div>
+<ul style="left: 110px; top: 329px; display: block;" id="dragContent"></ul>
+<div style="display: none; left: 24px; top: 333px;" id="dragDropIndicator"><img src="insert.gif"></div>
+<div id="saveContent"></div>
 
-</body>
-</html>
+</span></body></html>
