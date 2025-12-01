@@ -7,10 +7,10 @@ Released for free under the Creative Commons Attribution License
 body {
 	margin: 0;
 	padding: 0;
-	background: #E5E6DD;
+	background: #e6f2fa;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 14px;
-	color: #333331;
+	color: #141414;
 }
 
 h1, h2, h3 {
@@ -18,7 +18,7 @@ h1, h2, h3 {
 	padding: 2px;
 	text-transform: uppercase;
 	font-weight: 300;
-	color: #7D7764;
+	color: #141414;
 }
 
 h1 {
