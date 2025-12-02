@@ -1,13 +1,10 @@
 /*
 Design by TEMPLATED
-http://templated.co
-Released for free under the Creative Commons Attribution License
+Name       : Vestibule 
+Description: A two-column, fixed-width design with dark color scheme.
 */
 
-{
-	margin: 0;
-	padding: 0;
-}
+* { margin: 0; padding: 0; }
 
 body {
 	margin: 0;
@@ -25,74 +22,19 @@ h1, h2, h3 {
 	color: #FFFFFF;
 }
 
-h1 {
-	font-size: 2.6em;
-}
+h1 { font-size: 2.6em; }
+h2 { font-size: 1.8em; }
+h3 { font-size: 1.6em; }
 
-h2 {
-	font-size: 1.8em;
-}
+p, ul, ol { margin-top: 0; line-height: 180%; }
 
-h3 {
-	font-size: 1.6em;
-}
+a { text-decoration: none; color: #C30; }
+a:hover { text-decoration: underline; color: #FFF; }
 
-p, ul, ol {
-	margin-top: 0;
-	line-height: 180%;
-}
-
-ul, ol {
-}
-
-a {
-	text-decoration: none;
-	color: #C30;
-}
-
-a:hover {
-	text-decoration: underline;
-	color: #FFF;
-}
-
-img.border {
-	border: 6px solid #484848;
-}
-
-img.alignleft {
-	float: left;
-	margin-right: 25px;
-}
-
-img.alignright {
-	float: right;
-	margin-left: 25px;
-}
-
-img.aligncenter {
-	display: block;
-	margin: 0px auto 0px auto;
-}
-
-#wrapper {
-	background: #222222;
-}
-
-.container {
-	width: 1000px;
-	margin: 0px auto;
-}
-
-.clearfix:after {
-	content: ".";
-	display: block;
-	height: 0;
-	clear: both;
-	visibility: hidden;
-}
+#wrapper { background: #222222; }
+.container { width: 1000px; margin: 0px auto; }
 
 /* Menu */
-
 #menu-wrapper {
 	overflow: hidden;
 	height: 60px;
@@ -101,20 +43,8 @@ img.aligncenter {
 	line-height: 60px;
 }
 
-#menu {
-}
-
-#menu ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	text-align: center;
-}
-
-#menu li {
-	display: inline-block;
-}
-
+#menu ul { margin: 0; padding: 0; list-style: none; text-align: center; }
+#menu li { display: inline-block; }
 #menu li a {
 	display: block;
 	padding: 0px 20px;
@@ -130,32 +60,14 @@ img.aligncenter {
 	color: #FFFFFF;
 }
 
-#menu .current_page_item a {
-	color: #FFFFFF;
-}
+#menu .current_page_item a { color: #FFFFFF; }
 
 /* Logo */
+#logo { margin-bottom: 50px; text-align: center; }
+#logo p { margin-top: 10px; font-size: 1.2em; color: #666666; }
+#logo a { color: #FFFFFF; }
 
-#logo {
-	margin-bottom: 50px;
-	text-align: center;
-}
-
-#logo h1 {
-}
-
-#logo p {
-	margin-top: 10px;
-	font-size: 1.2em;
-	color: #666666;
-}
-
-#logo a {
-	color: #FFFFFF;
-}
-
-/* Page */
-
+/* Page Content Box */
 #page {
 	margin-bottom: 40px;
 	padding: 40px;
@@ -164,44 +76,20 @@ img.aligncenter {
 	border: 1px solid #282828;
 }
 
-/* Three Column */
+/* Three Column Grid (for Index page) */
+#three-column { overflow: hidden; margin-bottom: 40px; }
+.tbox1 { float: left; width: 310px; margin-right: 35px; }
+.tbox2 { float: left; width: 310px; margin-right: 35px; }
+.tbox3 { float: right; width: 310px; }
 
-#three-column {
-	overflow: hidden;
-	margin-bottom: 40px;
-}
-
-#three-column .content {
-}
-
-#three-column .tbox1 {
-	float: left;
-	width: 310px;
-	margin-right: 35px;
-}
-
-#three-column .tbox2 {
-	float: left;
-	width: 310px;
-	margin-right: 35px;
-}
-
-#three-column .tbox3 {
-	float: right;
-	width: 310px;
-}
-
-#three-column .box-style {
+.box-style {
 	padding: 25px;
 	background: #292929;
 	border-radius: 8px;
 	border: 1px solid #383838;
 }
 
-#three-column h2 {
-	margin-bottom: 20px;
-}
-
+/* Button Style */
 .button {
 	display: inline-block;
 	margin-top: 15px;
@@ -214,23 +102,12 @@ img.aligncenter {
 	font-weight: 700;
 	color: #FFFFFF;
 }
-
-.button:hover {
-	text-decoration: none;
-}
+.button:hover { text-decoration: none; background: #D40; }
 
 /* Footer */
-
 #footer {
 	padding: 50px 0px;
 	background: #080808;
 	text-align: center;
 	color: #555555;
-}
-
-#footer p {
-	font-size: 1em;
-}
-
-#footer a {
 }
