@@ -1,89 +1,260 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>Web Design - Jason Tillotson's E-Portfolio</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="http://fonts.googleapis.com/css?family=Oxygen:400,700,300" rel="stylesheet" type="text/css" />
-
-<!-- UPDATED CSS (SAME AS INDEX.HTML) -->
 <style>
-    body {
-        margin: 0;
-        padding: 0;
-        background: #333333;
-        font-family: 'Oxygen', sans-serif;
-        font-size: 14px;
-        color: #8f8f8f;
-    }
-    h1, h2, h3 { color: #FFFFFF; font-weight: 400; margin: 0; }
-    h1 { font-size: 3em; }
-    h2 { font-size: 2em; margin-bottom: 20px; }
-    p, ul, ol { margin-top: 0; line-height: 180%; }
-    
-    a { text-decoration: none; color: #C30; }
-    a:hover { text-decoration: underline; color: #FFF; }
-    
-    #wrapper { background: #222222; }
-    .container { width: 1000px; margin: 0 auto; padding: 0px; }
-    
-    #menu-wrapper { background: #111111; overflow: hidden; height: 60px; line-height: 60px; margin-bottom: 40px;}
-    #menu ul { margin: 0; padding: 0; list-style: none; text-align: center; }
-    #menu li { display: inline-block; padding: 0 20px; }
-    
-    /* Highlight the current page */
-    #menu li.current_page_item a { color: #FFF; font-weight: 700; text-decoration: none; }
-    
-    #menu a { color: #6c6c6c; text-transform: uppercase; font-size: 0.9em; font-weight: 600; letter-spacing: 1px;}
-    #menu a:hover { color: #FFFFFF; text-decoration: none; }
+body {
+	margin: 0;
+	padding: 0;
+	background: #e6f2fa;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 14px;
+	color: #141414;
+}
 
-    #logo { text-align: center; margin-bottom: 50px; }
-    #logo p { margin-top: 10px; color: #888; font-size: 1.2em; }
+h1, h2, h3 {
+	margin: 0;
+	padding: 2px;
+	text-transform: uppercase;
+	font-weight: 300;
+	color: #141414;
+}
 
-    #page { background: #222222; padding: 40px; border-radius: 8px; margin-bottom: 40px; }
-    .entry { font-size: 1.1em; }
-    
-    .button {
-        display: inline-block;
-        padding: 12px 20px;
-        background: #C30;
-        color: #FFF !important;
-        border-radius: 6px;
-        margin-top: 15px;
-        text-transform: uppercase;
-        font-size: 0.8em;
-        font-weight: 700;
-        letter-spacing: 1px;
-        border: none;
-    }
-    .button:hover { background: #D40; text-decoration: none; }
+h1 {
+	font-size: 2em;
+}
 
-    #footer { background: #080808; padding: 50px 0; text-align: center; color: #555; }
-    iframe { width: 100%; border: 1px solid #444; margin-bottom: 20px; }
+h2 {
+	font-size: 2.8em;
+}
+
+h3 {
+	font-size: 1.6em;
+}
+
+p, ul, ol {
+	margin-top: 0;
+	line-height: 180%;
+}
+
+ul, ol {
+}
+
+a {
+	text-decoration: none;
+	color: #5BA689;
+}
+
+a:hover {
+}
+
+#wrapper {
+	overflow: hidden;
+	background: #F1F2E9;
+}
+
+.container {
+	width: 1200px;
+	margin: 0px auto;
+}
+
+/* Header */
+
+#header-wrapper {
+	overflow: hidden;
+	height: 600px;
+}
+
+#header {
+	width: 960px;
+	height: 250px;
+	margin: 0 auto;
+	padding: 0px 20px;
+}
+
+/* Logo */
+
+#logo {
+	overflow: hidden;
+	height: 150px;
+}
+
+#logo h1, #logo p {
+	text-align: center;
+}
+
+#logo h1 {
+	padding: 5px 0px 20px 0px;
+	letter-spacing: -6px;
+	text-transform: capitalize;
+	font-size: 80px;
+}
+
+#logo p {
+	margin-top: -20px;
+	padding: 0px 0px 0px 5px;
+	font-size: 20px;
+	font-weight: 300;
+	color: #696969;
+}
+
+#logo p a {
+	color: #696969;
+}
+
+#logo a {
+	border: none;
+	background: none;
+	text-decoration: none;
+	color: #3C342E;
+}
+
+
+/* Menu */
+
+#menu-wrapper {
+	overflow: hidden;
+	height: 52px;
+	margin-bottom: 2em;
+	background: #0790eb;
+}
+
+#menu {
+	overflow: hidden;
+	height: 52px;
+}
+
+#menu ul {
+	margin: 0;
+	padding: 0px 0px 0px 0px;
+	list-style: none;
+	line-height: normal;
+	text-align: center;
+}
+
+#menu li {
+	display: inline-block;
+}
+
+#menu a {
+	display: block;
+	padding: 0px 30px;
+	line-height: 52px;
+	border: none;
+	text-decoration: none;
+	text-align: center;
+	font-family: 'Oswald', sans-serif;
+	font-size: 14px;
+	font-weight: 300;
+	color: #FFFFFF;
+}
+
+#menu a:hover, #menu .current_page_item a {
+	background: #7D7764;
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+#menu .current_page_item a {
+}
+
+/* Page */
+
+#page {
+	overflow: hidden;
+	padding: 20px 20px 40px 20px;
+}
+
+/* Content */
+
+#content {
+	float: left;
+	width: 752px;
+	padding: 0px 0px 0px 0px;
+}
+
+
+/* Footer */
+
+#footer {
+	height: 100px;
+	margin: 0 auto;
+	padding: 50px 0px 0px 0px;
+}
+
+#footer p {
+	margin: 0;
+	padding-top: 10px;
+	line-height: normal;
+	text-align: center;
+	text-shadow: 1px 1px 0px #FFFFFF;
+	color: #909090;
+}
+
+#footer a {
+	text-decoration: underline;
+	color: #909090;
+}
+
+#footer a:hover {
+	text-decoration: none;
+	color: #383838;
+}
+
+.box1 {
+	overflow: hidden;
+	height: 300px;
+	background: url(images/img04.jpg) no-repeat center bottom;
+}
+
+
+/* Three Column Content */
+
+#three-column {
+	overflow: hidden;
+	padding: 10px 0px 50px 0px;
+}
+
+#three-column .tbox1 {
+	float: left;
+	width: 384px;
+	margin-right: 20px;
+}
+
+#three-column .tbox2 {
+	float: left;
+	width: 384px;
+}
+
+#three-column .tbox3 {
+	float: right;
+	width: 384px;
+}
+
+.box-style {
+	background: #FFFFFF;
+	text-align: center;
+}
+
+.box-style h2 {
+	padding: 10px 0px;
+	letter-spacing: -1px;
+	font-size: 22px;
+	color: #2D2D2D;
+}
+
+.box-style .content {
+	overflow: hidden;
+	width: 324px;
+	padding: 30px;
+}
+
+.button
+{
+	display: inline-block;
+	margin: 1em 0em;
+	background: #000;
+	padding: 1em 2em;
+	color: #FFFFFF;
+
+}
 </style>
-</head>
-
-<body>
-<div id="wrapper">
-
-	<div id="menu-wrapper">
-		<div id="menu" class="container">
-			<ul>
-				<li><a href="index.html">About</a></li>
-				<liclass="current_page_item"><a href="gallery.html">Image Editing</a></li>
-				<li><a href="quiz.html">Web Design</a></li>
-				<li><a href="https://www.youtube.com/watch?v=n5AJojW1TOU">Video Production</a></li>
-				<li><a href="https://www.youtube.com/watch?v=lnuGvNN8kXY">Animation</a></li>
-				<li><a href="https://www.loom.com/share/0dd5c10d148644049cba53358a771dd2">Screencast</a></li>
-				<li><a href="mailto:jason.tillotson@ufl.edu">Contact Me</a></li>
-			</ul>
-		</div>
-	</div>
-
-	<div id="logo" class="container">
-        <h1>Jason Tillotson's E-Portfolio</h1>
-        <p>This is my EME 6208 e-portfolio. Thanks for stopping by!</p>
-	</div>
 <body>
   <h1>My Two Images</h1>
 
