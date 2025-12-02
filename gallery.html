@@ -2,42 +2,63 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<!-- Update Title -->
-<title>Image Editing Project</title>
+<title>Web Design - Jason Tillotson's E-Portfolio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="http://fonts.googleapis.com/css?family=Oxygen:400,700,300" rel="stylesheet" type="text/css" />
 
-<!-- KEEP CSS THE SAME IN EVERY FILE -->
+<!-- UPDATED CSS (SAME AS INDEX.HTML) -->
 <style>
-    body { margin: 0; padding: 0; background: #191919; font-family: 'Oxygen', sans-serif; font-size: 14px; color: #8f8f8f; }
+    body {
+        margin: 0;
+        padding: 0;
+        background: #333333;
+        font-family: 'Oxygen', sans-serif;
+        font-size: 14px;
+        color: #8f8f8f;
+    }
     h1, h2, h3 { color: #FFFFFF; font-weight: 400; margin: 0; }
     h1 { font-size: 3em; }
     h2 { font-size: 2em; margin-bottom: 20px; }
     p, ul, ol { margin-top: 0; line-height: 180%; }
-    a { text-decoration: none; color: #FFFFFF; }
-    a:hover { text-decoration: underline; }
-    #wrapper { background: #232323; }
+    
+    a { text-decoration: none; color: #C30; }
+    a:hover { text-decoration: underline; color: #FFF; }
+    
+    #wrapper { background: #222222; }
     .container { width: 1000px; margin: 0 auto; padding: 0px; }
-    #menu-wrapper { background: #000000; overflow: hidden; height: 60px; line-height: 60px; margin-bottom: 40px;}
+    
+    #menu-wrapper { background: #111111; overflow: hidden; height: 60px; line-height: 60px; margin-bottom: 40px;}
     #menu ul { margin: 0; padding: 0; list-style: none; text-align: center; }
     #menu li { display: inline-block; padding: 0 20px; }
     
-    /* Active Link Styling */
-    #menu li.current_page_item a { color: #FFF; font-weight: 700; text-decoration: underline; }
+    /* Highlight the current page */
+    #menu li.current_page_item a { color: #FFF; font-weight: 700; text-decoration: none; }
     
-    #menu a { color: #8f8f8f; text-transform: uppercase; font-size: 0.9em; }
+    #menu a { color: #6c6c6c; text-transform: uppercase; font-size: 0.9em; font-weight: 600; letter-spacing: 1px;}
     #menu a:hover { color: #FFFFFF; text-decoration: none; }
+
     #logo { text-align: center; margin-bottom: 50px; }
-    #logo p { margin-top: 10px; color: #666; font-size: 1.2em; }
-    #page { background: #191919; padding: 40px; border-radius: 8px; margin-bottom: 40px; border: 1px solid #333; }
+    #logo p { margin-top: 10px; color: #888; font-size: 1.2em; }
+
+    #page { background: #222222; padding: 40px; border-radius: 8px; margin-bottom: 40px; }
     .entry { font-size: 1.1em; }
-    #footer { background: #000; padding: 50px 0; text-align: center; color: #555; }
     
-    /* Button Style */
-    .button { display: inline-block; padding: 10px 20px; background: #444; color: #FFF; border-radius: 5px; margin-top: 15px; text-transform: uppercase; font-size: 0.8em; }
-    .button:hover { background: #666; text-decoration: none; }
-    
-    /* iframe styling */
+    .button {
+        display: inline-block;
+        padding: 12px 20px;
+        background: #C30;
+        color: #FFF !important;
+        border-radius: 6px;
+        margin-top: 15px;
+        text-transform: uppercase;
+        font-size: 0.8em;
+        font-weight: 700;
+        letter-spacing: 1px;
+        border: none;
+    }
+    .button:hover { background: #D40; text-decoration: none; }
+
+    #footer { background: #080808; padding: 50px 0; text-align: center; color: #555; }
     iframe { width: 100%; border: 1px solid #444; margin-bottom: 20px; }
 </style>
 </head>
@@ -45,12 +66,11 @@
 <body>
 <div id="wrapper">
 
-    <!-- HEADER / MENU (COPIED FROM INDEX.HTML) -->
 	<div id="menu-wrapper">
 		<div id="menu" class="container">
 			<ul>
 				<li><a href="index.html">About</a></li>
-				<li class="current_page_item"><a href="gallery.html">Image Editing</a></li>
+				<liclass="current_page_item"><a href="gallery.html">Image Editing</a></li>
 				<li><a href="quiz.html">Web Design</a></li>
 				<li><a href="https://www.youtube.com/watch?v=n5AJojW1TOU">Video Production</a></li>
 				<li><a href="https://www.youtube.com/watch?v=lnuGvNN8kXY">Animation</a></li>
@@ -58,6 +78,11 @@
 				<li><a href="mailto:jason.tillotson@ufl.edu">Contact Me</a></li>
 			</ul>
 		</div>
+	</div>
+
+	<div id="logo" class="container">
+        <h1>Jason Tillotson's E-Portfolio</h1>
+        <p>This is my EME 6208 e-portfolio. Thanks for stopping by!</p>
 	</div>
 <body>
   <h1>My Two Images</h1>
