@@ -1,161 +1,122 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
-
-<!--
-Design by TEMPLATED
-http://templated.co
-Released for free under the Creative Commons Attribution License
-Name       : Vestibule 
-Description: A two-column, fixed-width design with dark color scheme.
-Version    : 1.0
-Released   : 20130406
--->
-
-<!-- Comments are in ALL CAPS -->
-
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-
-<!-- SET THE PAGE TITLE INSIDE THE TITLE TAGS BELOW -->
-<title>Jason Tillotson's E-Portfolio</title>
-
+<title>Web Design - Jason Tillotson's E-Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="http://fonts.googleapis.com/css?family=Oxygen:400,700,300" rel="stylesheet" type="text/css" />
-<link href="style2.css" rel="stylesheet" type="text/css" media="screen" />
+
+<!-- UPDATED CSS (SAME AS INDEX.HTML) -->
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #333333;
+        font-family: 'Oxygen', sans-serif;
+        font-size: 14px;
+        color: #8f8f8f;
+    }
+    h1, h2, h3 { color: #FFFFFF; font-weight: 400; margin: 0; }
+    h1 { font-size: 3em; }
+    h2 { font-size: 2em; margin-bottom: 20px; }
+    p, ul, ol { margin-top: 0; line-height: 180%; }
+    
+    a { text-decoration: none; color: #C30; }
+    a:hover { text-decoration: underline; color: #FFF; }
+    
+    #wrapper { background: #222222; }
+    .container { width: 1000px; margin: 0 auto; padding: 0px; }
+    
+    #menu-wrapper { background: #111111; overflow: hidden; height: 60px; line-height: 60px; margin-bottom: 40px;}
+    #menu ul { margin: 0; padding: 0; list-style: none; text-align: center; }
+    #menu li { display: inline-block; padding: 0 20px; }
+    
+    /* Highlight the current page */
+    #menu li.current_page_item a { color: #FFF; font-weight: 700; text-decoration: none; }
+    
+    #menu a { color: #6c6c6c; text-transform: uppercase; font-size: 0.9em; font-weight: 600; letter-spacing: 1px;}
+    #menu a:hover { color: #FFFFFF; text-decoration: none; }
+
+    #logo { text-align: center; margin-bottom: 50px; }
+    #logo p { margin-top: 10px; color: #888; font-size: 1.2em; }
+
+    #page { background: #222222; padding: 40px; border-radius: 8px; margin-bottom: 40px; }
+    .entry { font-size: 1.1em; }
+    
+    .button {
+        display: inline-block;
+        padding: 12px 20px;
+        background: #C30;
+        color: #FFF !important;
+        border-radius: 6px;
+        margin-top: 15px;
+        text-transform: uppercase;
+        font-size: 0.8em;
+        font-weight: 700;
+        letter-spacing: 1px;
+        border: none;
+    }
+    .button:hover { background: #D40; text-decoration: none; }
+
+    #footer { background: #080808; padding: 50px 0; text-align: center; color: #555; }
+    iframe { width: 100%; border: 1px solid #444; margin-bottom: 20px; }
+</style>
 </head>
 
 <body>
 <div id="wrapper">
-<!-- START OF THE NAVIGATION SECTION.  DO NOT CHANGE ANYTHING ABOVE THIS LINE EXCEPT TO SET THE TITLE. -->
-
 
 	<div id="menu-wrapper">
 		<div id="menu" class="container">
 			<ul>
-				<!-- NAVIGATION MENU.  THERE SHOULD BE ONE LIST ITEM FOR EACH BUTTON IN YOUR NAVIGATION BAR. -->
-                <!-- REPLACE THE # IN THE LINK WITH THE FILE NAME OF THE APPROPRIATE PAGE.  -->
-                <li class="current_page_item"><a href="index.html">About</a></li>
-				<li><a href="gallery.html">Image Editing</a></li>
+				<li><a href="index.html">About</a></li>
+				<liclass="current_page_item"><a href="gallery.html">Image Editing</a></li>
 				<li><a href="quiz.html">Web Design</a></li>
 				<li><a href="https://www.youtube.com/watch?v=n5AJojW1TOU">Video Production</a></li>
 				<li><a href="https://www.youtube.com/watch?v=lnuGvNN8kXY">Animation</a></li>
 				<li><a href="https://www.loom.com/share/0dd5c10d148644049cba53358a771dd2">Screencast</a></li>
-				<li><a href="mailto: jason.tillotson@ufl.edu">Contact Me</a></li>
+				<li><a href="mailto:jason.tillotson@ufl.edu">Contact Me</a></li>
 			</ul>
 		</div>
 	</div>
+
 	<div id="logo" class="container">
-		<!-- THIS IS WHERE YOU CUSTOMIZE THE HEADER FOR EACH PAGE. -->
         <h1>Jason Tillotson's E-Portfolio</h1>
-		<!-- THIS IS WHERE YOU CUSTOMIZE THE SUBHEADER FOR EACH PAGE. -->
         <p>This is my EME 6208 e-portfolio. Thanks for stopping by!</p>
 	</div>
+
 	<div id="page" class="container">
 		<div>
 			<div class="entry">
-				<!-- THIS IS WHERE YOU CUSTOMIZE THE INTRODUCTORY PARAGRAPH FOR EACH PAGE. -->
-                <p>A little about me…
+				<h2>Web Design Projects</h2>
+                <p>Here are the two assessments I created for the Web Design module.</p>
+                <hr style="border: 0; border-top: 1px solid #333; margin: 20px 0;">
 
-I grew up in Cape Coral, Florida and moved to Washington, D.C. at the age of 17 to attend American University. I represented The AU Eagles at Division I level for three years before suffering an injury that would ultimately kick-start my coaching career. I went on to graduate from AU in 2019 with a degree in Broadcast Journalism.
+                <h3>1. Harry Potter Quiz</h3>
+                <p>This is a quiz designed to test your knowledge of the Wizarding World.</p>
+                <div style="background: #292929; padding: 20px; text-align: center; border: 1px dashed #555; margin-bottom: 30px;">
+                    <p><em>[Insert Quiz Embed Code Here]</em></p>
+                    <a href="#" class="button">Take the Quiz</a>
+                </div>
 
-In 2023 I moved to Gainesville, Florida to start a career in higher education at the University of Florida. 
+                <h3>2. Career Resources Drag & Drop</h3>
+                <p>A drag and drop assessment to help students match career resources to their definitions.</p>
+                <div style="background: #292929; padding: 20px; text-align: center; border: 1px dashed #555;">
+                     <p><em>[Insert Drag & Drop Embed Code Here]</em></p>
+                     <a href="#" class="button">Start Assessment</a>
+                </div>
 
-While most of my professional life has been spent coaching the wonderful sport of swimming, and helping students find purpose in their early careers, I believe people should be multidimensional, and pursue all their interests. This philosophy led me to start a non-profit, pursue a Masters degree, train for marathons, write a book, dabble in voice-acting and more!
-
-When I’m not working, running, or writing, you can find me lounging on the couch with my dogs and watching something on HBO.
-
-Click the button below to see what i’m working on these days! </p>
+                <br><br>
+                <a href="index.html" class="button">← Back to Home</a>
 			</div>
 		</div>
 	</div>
     
-    
-<!-- END OF THE NAVIGATION SECTION. -->
-
-<!-- START OF THE CONTENT SECTION. -->
-
-<!-- ON OTHER PAGES, LIKE THE PROJECT PAGES, YOU WILL TAKE OUT EVERYTHING BETWEEN HERE AND THE END OF THE CONTENT SECTION AND REPLACE IT WITH THE PROJECT CONTENT. -->
-    
-    
-    
-    
-	<div id="three-column" class="container">
-		<div class="tbox1">
-			<div class="box-style">
-				<div class="content">
-					
-					<h2>Image Editing</h2>
-					<p>For the image editing project, I edited a photo of University Ave. and 13th Street on a rainy night last winter, and maniuplated it in Adobe Photoshop Express to fit the vibe of Matthew McConaughey's book Greenlights. I also created a logo for a fictional swim team.</p>
-					<a href="gallery.html" class="button">Learn More</a>
-				</div>
-			</div>
-		</div>
-		<div class="tbox2">
-			<div class="box-style">
-				<div class="content">
-					<h2>Web Design</h2>
-					<p>For this project I created a Harry Potter Quiz, and a Career Resources Drag & Drop Assessment. They are located in the same page when you click on "Learn More". </p>
-					<a href="quiz.html" class="button">Learn More</a>
-				</div>
-			</div>
-		</div>
-		<div class="tbox3">
-			<div class="box-style">
-				<div class="content">
-					<h2>Video Production</h2>
-					<p>My video for Module 4 Project 5 - An overview of my favorite video game of all time, The Elder Scrolls 5: Skyrim.</p>
-					<iframe width="100%" height="200" src="https://www.youtube.com/embed/n5AJojW1TOU?si=LwZ1GHU3g_hunko4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div id="three-column" class="container">
-		<div class="tbox1">
-			<div class="box-style">
-				<div class="content">
-					<h2>Digital Animation</h2>
-					<p>A brief overview of the wine-making process. With three years of experience in cider production, I tried my best to condense what I know about wine-making into 15-short seconds.</p>
-					<iframe width="100%" height="200" src="https://www.youtube.com/embed/lnuGvNN8kXY?si=VdU5tUz08-kRPEix" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-				</div>
-			</div>
-		</div>
-		</div>
-		<div class="tbox2">
-			<div class="box-style">
-				<div class="content">
-					<h2>Screencasting</h2>
-					<p>I used Gemini Veo3 as my example for this project. The AI video and photo creator tool is impressive when it comes to video quality, but not great with voice and speech matching.</p>
-					<iframe width="100%" height="200" src="https://www.loom.com/embed/0dd5c10d148644049cba53358a771dd2" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-				</div>
-			</div>
-		</div>
-		<div class="tbox3">
-			<div class="box-style">
-				<div class="content">
-					<h2>CareerOS</h2>
-					<p>I built a prototype of a Career Operating System using Lovable. This is a basic chatbot trained with the knowledge of some career resources. It is still very much a work in progress and is no way sponsored or operated by the University of Florida. Purely for educational purposes.</p>
-					<a href="https://preview--gator-career-navigator.lovable.app/"class="button">Learn More</a>
-				
-				</div>
-			</div>
-		</div>
-	</div>	
-    
-    
-    
-    
-    
-<!-- END OF THE CONTENT SECTION.  BELOW YOU CAN CUSTOMIZE YOUR FOOTER. -->
 </div>
 
 <div id="footer">
-	<!-- START FOOTER -->
-	<p>Thanks for stopping by my E-Portfolio! Template by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.  Photos by <a href="http://fotogrph.com/">Fotogrph</a>.</p>
+	<p>Thanks for stopping by my E-Portfolio! Template by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. Photos by <a href="http://fotogrph.com/">Fotogrph</a>.</p>
 	<a href="https://education.ufl.edu/educational-technology/" class="button">UF EdTech</a>
-    <!-- END FOOTER -->
 </div>
 
 </body>
