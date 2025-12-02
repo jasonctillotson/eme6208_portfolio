@@ -34,6 +34,9 @@
 	</div>
 <html>
 <body>
+<div class="box-style">
+    <div class="content">
+
   <h1>Web Design - Quiz and Drag & Drop Assessment</h1>
   <p>This one was challenging. I spent a lot of time fixing small little typos and adjusting fonts, spacing and trying to figure out how to add an image (which I failed to do). I had to rely on a lot of LinkedIn learning videos and GitHub articles haha. 
 
@@ -142,13 +145,11 @@ generatequestions()
 
 	<title>Drag and Drop Quiz</title>
 	
-	 <link rel="stylesheet" href="style2.css">
+	 <link rel="stylesheet" href="style.css">
 	
 	
 	<script type="text/javascript">
 	
-	
-	/* VARIABLES YOU COULD MODIFY */
 	var boxSizeArray = [3,3,3,3,3,3,3];	// Array indicating how many items there is room for in the right column ULs
 	
 	var arrow_offsetX = -10;	// Offset X - position of small arrow
@@ -157,16 +158,16 @@ generatequestions()
 	var arrow_offsetX_firefox = -10;	// Firefox - offset X small arrow
 	var arrow_offsetY_firefox = -15; // Firefox - offset Y small arrow
 	
-	var verticalSpaceBetweenListItems = 5;	// Pixels space between one <li> and next	
+	var verticalSpaceBetweenListItems = 10;	// Pixels space between one <li> and next	
 											// Same value or higher as margin bottom in CSS for #dhtmlgoodies_dragDropContainer ul li,#dragContent li
 	
 											
 	var initShuffleItems = true;	// Shuffle items before staring
 
-	var indicateDestionationByUseOfArrow = true;	// Display arrow to indicate where object will be dropped(false = use rectangle)
+	var indicateDestionationByUseOfArrow = false;	// Display arrow to indicate where object will be dropped(false = use rectangle)
 	
 	
-	var lockedAfterDrag = false;
+	var lockedAfterDrag = true;
 	
 	
 	/* END VARIABLES YOU COULD MODIFY */
@@ -218,7 +219,7 @@ generatequestions()
 		
 		
 		
-		dragTimer = 0;
+		dragTimer = 1;
 		dragContentObj.style.left = e.clientX + sl + 'px';
 		dragContentObj.style.top = e.clientY + st + 'px';
 		contentToBeDragged = this;
@@ -559,11 +560,11 @@ generatequestions()
   			<ul style="height: 72px;" id="box4"></ul>
 		</div>
 
-		
+	</div>
+</div>	
 	</div>
 </div>
 <ul style="left: 110px; top: 329px; display: block;" id="dragContent"></ul>
 <div style="display: none; left: 24px; top: 333px;" id="dragDropIndicator"><img src="insert.gif"></div>
 <div id="saveContent"></div>
-
 </span></body></html>
